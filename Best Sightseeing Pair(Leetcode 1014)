@@ -1,0 +1,15 @@
+class Solution {
+    public int maxScoreSightseeingPair(int[] values) {
+        int n = values.length;
+        int[] arr = new int[n];
+        arr[0] = values[0];
+        int maxi = 0;
+        for (int i = 1; i < n; i++) {
+            int score = values[i] - i;
+            maxi = Math.max(maxi,arr[i - 1] + score);
+            int lscore = values[i] + i;
+            arr[i] = Math.max(arr[i - 1], lscore);
+        }
+        return maxi;
+    }
+}
